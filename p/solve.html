@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .first {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .second {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 400px;
+        }
+
+        .play {
+            width: 60px;
+            height: 30px;
+            font-size: 15px;
+        }
+
+        .second select {
+            border-radius: 5px;
+            width: 100px;
+            height: 20px;
+        }
+
+        time {
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <center style="margin-top: 40px;">
+        <h1>Solve Sudoku</h1>
+    </center>
+
+    <div class="first">
+        <div class="second">
+            <h3>Select Mode</h3>
+            <select name="" id="mode">
+                <option value="1">Easy</option>
+                <option value="2">Medium</option>
+                <option value="3">Hard</option>
+                <option value="4">Expert</option>
+            </select>
+
+            <button class="play" onclick="selectMode(), extra()">play</button>
+
+            <div class="time" id="time">00:00:00</div>
+            <div id="result_dec"></div>
+        </div>
+    </div>
+
+    <section class="main">
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="0"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="1"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="2"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="3"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="4"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="5"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="6"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="7"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="8"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="9"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="10"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="11"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="12"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="13"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="14"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="15"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="16"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="17"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="18"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="19"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="20"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="21"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="22"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="23"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="24"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="25"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="26"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="27"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="28"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="29"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="30"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="31"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="32"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="33"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="34"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="35"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="36"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="37"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="38"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="39"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="40"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="41"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="42"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="43"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="44"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="45"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="46"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="47"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="48"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="49"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="50"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="51"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="52"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="53"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="54"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="55"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="56"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="57"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="58"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="59"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="60"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="61"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="62"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="63"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="64"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="65"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="66"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="67"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="68"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="69"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="70"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="71"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="72"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="73"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="74"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="75"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="76"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="77"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="78"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="79"></div>
+        <div class="box"><input type="number" oninput="maxLengthCheck(this)" name="" id="80"></div>
+
+    </section>
+
+    <center> <button onclick="Reset1()">Reset</button> </center>
+</body>
+<script>
+    function maxLengthCheck(object) {
+        var myID = object.id
+        let check = false
+        object.value = object.value.slice(0, 1)
+        let a = (myID - (myID % 9)) / 9
+
+        if (a >= 0 && a <= 2) {
+            let c = 0
+            for (i = 0; i < 3; i++) {
+                let b = c + (myID % 9 - myID % 3)
+                for (j = 0; j < 3; j++) {
+                    console.log(b)
+                    if ((object.value == document.getElementsByTagName("input")[b].value) && object.value != "" && object.id != document.getElementsByTagName("input")[b].id) {
+                        check = true
+                    }
+                    b++
+                }
+                c = c + 9
+            }
+        }
+        else if (a >= 3 && a <= 5) {
+            let c = 27
+            for (i = 0; i < 3; i++) {
+                let b = c + (myID % 9 - myID % 3)
+                for (j = 0; j < 3; j++) {
+                    console.log(b)
+                    if ((object.value == document.getElementsByTagName("input")[b].value) && object.value != "" && object.id != document.getElementsByTagName("input")[b].id) {
+                        check = true
+                    }
+                    b++
+                }
+                c = c + 9
+            }
+        }
+        else {
+            let c = 54
+            for (i = 0; i < 3; i++) {
+                let b = c + (myID % 9 - myID % 3)
+                for (j = 0; j < 3; j++) {
+                    console.log(b)
+                    if ((object.value == document.getElementsByTagName("input")[b].value) && object.value != "" && object.id != document.getElementsByTagName("input")[b].id) {
+                        check = true
+                    }
+                    b++
+                }
+                c = c + 9
+            }
+        }
+        for (i = 0; i < 9; i++) {
+
+            if ((object.value == document.getElementsByTagName("input")[(myID % 9) + (i * 9)].value) && object.value != "" && object.id != document.getElementsByTagName("input")[(myID % 9) + (i * 9)].id) {
+                check = true
+            }
+            if ((object.value == document.getElementsByTagName("input")[(myID - (myID % 9)) + (i)].value) && object.value != "" && object.id != document.getElementsByTagName("input")[(myID - (myID % 9)) + (i)].id) {
+                check = true
+            }
+        }
+        if (check) {
+            object.style.color = "red"
+        }
+        else {
+            object.style.color = "black"
+        }
+        console.log(object.id)
+    }
+</script>
+<script>
+    a = 0
+    for (i = 0; i < 18; i++) {
+        document.getElementsByTagName("input")[a].style.background = "cyan"
+        a++
+        if (a % 9 == 0) {
+            a = a
+        }
+        else if (a % 3 == 0) {
+            a = a + 3
+        }
+    }
+    a = 30
+    for (i = 0; i < 9; i++) {
+        document.getElementsByTagName("input")[a].style.background = "cyan"
+        a++
+        if (a % 3 == 0) {
+            a = a + 6
+        }
+    }
+
+    a = 54
+    for (i = 0; i < 18; i++) {
+        document.getElementsByTagName("input")[a].style.background = "cyan"
+        a++
+        if (a % 9 == 0) {
+            a = a
+        }
+        else if (a % 3 == 0) {
+            a = a + 3
+        }
+    }
+</script>
+<script>
+    let b = []
+    function extra() {
+        document.getElementById("time").innerHTML = `00:00:00`
+        startStop()
+        b = []
+        setTimeout(() => {
+            for (i = 0; i < 81; i++) {
+                b.push(document.getElementsByTagName("input")[i].value)
+            }
+        }, 100);
+    }
+
+
+    function Reset1() {
+        document.getElementById("time").innerHTML = `00:00:00`
+        startStop()
+        let c = b
+        for (x = 0; x < 81; x++) {
+            document.getElementsByTagName("input")[x].value = c[x]
+        }
+
+    }
+</script>
+
+<script>
+    let isRunning = false;
+    let startTime = 0;
+    let elapsedTime = 0;
+
+    function startStop() {
+        document.getElementById("result_dec").innerHTML = ''
+
+        if (isRunning) {
+            reset()
+        }
+        startTime = Date.now() - elapsedTime;
+        timer = setInterval(updateTime, 10);
+        isRunning = !isRunning;
+    }
+
+    function updateTime() {
+        elapsedTime = Date.now() - startTime;
+        displayTime(elapsedTime);
+    }
+
+    function displayTime(time) {
+        const milliseconds = time % 1000;
+        const seconds = Math.floor((time / 1000) % 60);
+        const minutes = Math.floor((time / (1000 * 60)) % 60);
+        const hours = Math.floor(time / (1000 * 60 * 60));
+
+        const formattedTime = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}`;
+        document.getElementById("time").innerHTML = formattedTime;
+    }
+
+    function formatTime(time) {
+        return time < 10 ? `0${time}` : time;
+    }
+
+    function formatMilliseconds(milliseconds) {
+        return milliseconds < 10 ? `00${milliseconds}` : milliseconds < 100 ? `0${milliseconds}` : milliseconds;
+    }
+
+    function reset() {
+        clearInterval(timer);
+        isRunning = false;
+        elapsedTime = 0;
+        displayTime(0);
+    }
+</script>
+<script src="solve.js"></script>
+
+</html>

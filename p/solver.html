@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <center style="margin-top: 40px;">
+        <h1>Sudoku Solver</h1>
+    </center>
+
+    <section class="main">
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+        <div class="box"><input type="number" name="" id=""></div>
+    </section>
+    <center><button id="generate" onclick="gen()">Generate</button></center>
+    <center><button id="reset" onclick="res()">Reset</button></center>
+</body>
+<script>
+    a = 0
+    for (i = 0; i < 18; i++) {
+        document.getElementsByTagName("input")[a].style.background = "cyan"
+        a++
+        if (a % 9 == 0) {
+            a = a
+        }
+        else if (a % 3 == 0) {
+            a = a + 3
+        }
+    }
+    a = 30
+    for (i = 0; i < 9; i++) {
+        document.getElementsByTagName("input")[a].style.background = "cyan"
+        a++
+        if (a % 3 == 0) {
+            a = a + 6
+        }
+    }
+
+    a = 54
+    for (i = 0; i < 18; i++) {
+        document.getElementsByTagName("input")[a].style.background = "cyan"
+        a++
+        if (a % 9 == 0) {
+            a = a
+        }
+        else if (a % 3 == 0) {
+            a = a + 3
+        }
+    }
+</script>
+<script src="solver.js"></script>
+
+</html>

@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: #88d3f9;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    width: 360px;
+    height: 360px;
+    margin: 40px auto;
+}
+
+.box {
+    width: 40px;
+    height: 40px;
+}
+
+input {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    appearance: textfield;
+}
+
+button {
+    width: 150px;
+    height: 50px;
+    border-radius: 10% 30%;
+    font-size: 20px;
+    background-image: linear-gradient(to right, rgb(5, 169, 240), aqua);
+    text-align: center;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+#reset {
+    display: none;
+}
