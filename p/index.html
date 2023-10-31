@@ -21,10 +21,6 @@
             min-height: calc(100vh - 150px);
         }
 
-        a {
-            text-decoration: none;
-            color: black;
-        }
 
         footer {
             display: flex;
@@ -71,18 +67,41 @@
         .contact {
             background-color: black;
         }
+
+        .box-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            padding: 20px;
+            width: 300px;
+            height: 30px;
+            margin-top: 10px;
+            border-radius: 20px;
+            background-color: rgba(128, 128, 128, 0.458);
+            cursor: pointer;
+        }
+
+        .box-container h2 {
+            background-color: transparent;
+        }
+
+        .box-container:active,
+        .box-container:hover {
+            background-color: rgb(128, 128, 128);
+        }
     </style>
 </head>
 
 <body>
     <div class="main">
         <h1>Welcome</h1>
-        <a href="solve.html">
+        <div class="box-container" onclick="SolveLink()">
             <h2>Solve Sudoku</h2>
-        </a>
-        <a href="solver.html">
+        </div>
+        <div class="box-container" onclick="SolverLink()">
             <h2>Solver Sudoku</h2>
-        </a>
+        </div>
     </div>
     <!-- <footer>
         <div class="foot">
@@ -117,5 +136,13 @@
         </div>
     </footer> -->
 </body>
+<script>
+    function SolveLink() {
+        window.location.assign("solve.html")
+    }
+    function SolverLink() {
+        window.location.assign("solver.html")
+    }
+</script>
 
 </html>
