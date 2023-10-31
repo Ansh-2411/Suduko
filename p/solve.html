@@ -155,6 +155,9 @@
     function maxLengthCheck(object) {
         var myID = object.id
         let check = false
+        if (object.value == 0) {
+            object.value = ""
+        }
         object.value = object.value.slice(0, 1)
         let a = (myID - (myID % 9)) / 9
 
